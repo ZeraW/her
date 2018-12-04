@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:id="@+id/partyAnim"
+
+    >
+
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cv"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    card_view:cardCornerRadius="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="4"
+
+            >
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="3"
+    android:orientation="vertical">
+    <TextView
+        android:text="the Party"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/newParty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+ <!--   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:text="the Party"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/newParty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+
+    </LinearLayout>-->
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:layout_gravity="left"
+                android:layout_weight="1"/>
+            <TextView
+                android:text="place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2">
+
+
+            <TextView
+                android:text="&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/newPartyTime"
+                android:textSize="17dp"
+                android:layout_weight="1"
+              />
+            <TextView
+                android:text="&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/newPartPlace"
+                android:textSize="17dp"
+                android:layout_weight="1"
+                />
+
+
+        </LinearLayout>
+-->
+    </LinearLayout>
+
+
+<!--
+
+
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:gravity="center">
+                <TextView
+                    android:text="the Party"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:id="@+id/newParty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+
+            </TableRow>
+
+            <TableRow
+                android:weightSum="2"
+                >
+
+                <TextView
+                    android:text="time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:layout_gravity="left"
+                    android:layout_column="1"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="place"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:layout_column="2"
+                    android:layout_weight="1"/>
+
+
+            </TableRow>
+
+            <TableRow
+                android:weightSum="2">
+
+                <TextView
+                    android:text="&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/newPartyTime"
+                    android:textSize="17dp"
+
+                    android:layout_column="1"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/newPartPlace"
+                    android:textSize="17dp"
+
+                    android:layout_column="2"
+                    android:layout_weight="1"/>
+
+
+            </TableRow>
+
+        </TableLayout>-->
+<!--
+        </LinearLayout>
+-->
+
+
+
+
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/semem"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="center"
+                    android:id="@+id/partyImg"/>
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+
+
+
+</LinearLayout>

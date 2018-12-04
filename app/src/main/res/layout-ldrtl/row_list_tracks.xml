@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+
+    android:weightSum="3">
+<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:layout_marginTop="2dp"
+    card_view:cardCornerRadius="4dp">-->
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="7dp"
+    android:id="@+id/tracksListRowAnim"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--  android:background="@drawable/custom_bg"
+      android:clickable="true"-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <!--    <Button
+                    android:layout_width="60sp"
+                    android:layout_height="50sp"
+                    android:id="@+id/toneAction"
+                    android:background="@drawable/calltone_icon"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    />-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_margin="10dp"
+                    android:text="Music No"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:layout_weight="2"
+                    android:textColor="@color/white"
+                    android:id="@+id/musicName" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="جديد"
+                    android:layout_gravity="center"
+                    android:gravity="left"
+                    android:textColor="@color/colorAccent"
+                    android:id="@+id/newsTxt"
+                    android:visibility="gone"
+                    />
+
+
+
+            </LinearLayout>
+
+
+
+
+            <Button
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:id="@+id/toneAction"
+                android:background="@drawable/tone_white"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                />
+
+
+
+
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="30dp"
+                android:id="@+id/imageView3"
+                android:visibility="gone"
+                android:layout_weight="1"/>
+
+
+            <!--        <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="20dp"
+                        android:layout_height="30dp"
+                        android:id="@+id/gif_tracks"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:src="@drawable/vod"
+                        android:visibility="gone"
+                        />-->
+
+
+
+
+
+        </LinearLayout>
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:id="@+id/TrackLoadingDownload"
+            android:visibility="gone"
+
+
+            />
+
+    </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/line"/>
+
+</LinearLayout>
+    <!--
+
+       </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+    -->

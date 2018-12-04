@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:id="@+id/h"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    >
+
+    <android.support.v7.widget.RecyclerView
+
+        android:id="@+id/NewsList"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+
+        />
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:indeterminate="true"
+        android:layout_gravity="center"
+        android:id="@+id/loadingPrograss"
+        android:visibility="gone"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="لا يوجد اخبار بعد"
+        android:textSize="20dp"
+        android:id="@+id/txtError"
+        android:visibility="gone"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center"/>
+    <!--    <include
+            layout="@layout/company_logo"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_anchor="@id/h"
+            app:layout_anchorGravity="bottom|end"
+            />-->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retry"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@+id/retry_news"
+        android:visibility="invisible"/>
+
+
+
+
+</android.support.design.widget.CoordinatorLayout>
+

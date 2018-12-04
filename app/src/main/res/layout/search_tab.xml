@@ -1,0 +1,18 @@
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+
+<android.support.v7.widget.SearchView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:queryHint="search here...."
+    android:contextClickable="true"
+    android:id="@+id/usersSearch"
+    style="@style/CitySearchView"
+/>
+
+</FrameLayout>

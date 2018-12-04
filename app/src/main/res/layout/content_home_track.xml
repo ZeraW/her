@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/home">
+
+
+<!--
+//    android:layout_marginTop="205dp"
+-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/MusicListRV"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:layout_weight="3"/>
+  <!--  <include
+        layout="@layout/company_logo"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:layout_anchor="@id/MusicListRV"
+        app:layout_anchorGravity="bottom|end"
+        />-->
+    <include
+        layout="@layout/player_sheet_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/playerSheetView"
+        app:layout_anchor="@id/MusicListRV"
+        app:layout_anchorGravity="bottom|end"
+        android:visibility="gone"
+
+
+        />
+
+</LinearLayout>

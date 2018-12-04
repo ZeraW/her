@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ياسين التهامى"
+            android:textColor="@color/white"
+
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:layout_marginRight="7dp"
+            android:layout_weight="2"
+            android:id="@+id/name" />
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="5dp"
+
+            card_view:cardCornerRadius="7dp"
+            >
+
+        <ImageButton
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:gravity="right"
+            android:layout_weight="1"
+            android:src="@drawable/semem"
+            android:id="@+id/imageButton" />
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            card_view:cardCornerRadius="4dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="السيرة الذاتيه"
+                android:textColor="@color/colorAccent"
+                android:textSize="25dp"
+                android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:id="@+id/nashaa"
+                    android:text="ياسين التهامي ( 6 ديسمبر عام 1949م - إلى الأن) المعروف بالشيخ ياسين التهامي منشد ديني مصري، ولد في قريه الحواتكة مركز منفلوط محافظة أسيوط"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+
+
+            </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+<!--
+****************************************************************
+-->
+
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                card_view:cardCornerRadius="4dp"
+                android:visibility="gone"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:text="رحلة الدعوة"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="25dp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/trip"
+                        android:layout_gravity="right"
+                        android:text="
+نشأ الشيخ في بيت ديني وعائلة ينتسب أهلها إلى التدين , وأهم هذه العائلة هو والد الشيخ , الذي كان من أولياء الله الصالحين ومن الزهاد والعابدين بشهادة كل من رآه
+وكان لهذا الجو الديني تأثير عميق في نفس شيخنا , فقد نشأ وتربى في جو يسوده التدين وحب وذكر الله , وذلك من خلال ليالي الذكر التي كان يقيمها والده في المناسبات الإسلامية , مثل المولد النبوي الشريف وغيرها من المناسبات الدينية .
+ومن هنا دفع به والده إلى أن يتلقى تعليمه بالمعاهد الأزهرية حتى وصل إلى السنة الثانية في المرحلة الثانوية الأزهرية , وكان ذلك عام 1970 م . ثم انقطع عن الدراسة لظروف خاصة
+."
+                        android:textSize="20dp"
+                        android:textStyle="bold"/>
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+
+
+
+    <!--        <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                card_view:cardCornerRadius="4dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:text="اللقب"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="25dp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+
+                    android:text="
+الشيخ ياسين التهامي - عميد المنشدين المصريين والعرب
+وأفضل منشد ديني في العالم العربي منذ السبعينات وإلى الآن
+"
+                        android:textSize="20dp"
+                        android:textStyle="bold"/>
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>-->
+
+        </LinearLayout>
+    </ScrollView>
+ <!--   <include layout="@layout/company_logo"
+        android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+        android:layout_marginTop="-35dp"
+
+        app:layout_anchor="@id/scrollView"
+        app:layout_anchorGravity="bottom|end"
+        />-->
+
+
+</LinearLayout>

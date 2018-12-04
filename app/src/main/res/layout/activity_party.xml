@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<com.vlonjatg.progressactivity.ProgressActivity xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:progressActivity="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:id="@+id/progress"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    progressActivity:loadingBackgroundColor="#FFFFFF"
+    progressActivity:emptyBackgroundColor="#fbc02d"
+    progressActivity:emptyContentTextColor="#FFFFFF"
+    progressActivity:emptyTitleTextColor="#FFFFFF"
+    progressActivity:errorBackgroundColor="#42a5f5"
+    progressActivity:errorButtonTextColor="#FFFFFF"
+    progressActivity:errorContentTextColor="#FFFFFF"
+    progressActivity:errorTitleTextColor="#FFFFFF"
+
+    >-->
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/partyList"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="42dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="لا توجد حفلات جديده"
+        android:textSize="20dp"
+        android:id="@+id/txtError"
+        android:visibility="gone"
+        android:textColor="@color/white"
+        android:layout_gravity="center"/>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:indeterminate="true"
+        android:layout_gravity="center"
+        android:id="@+id/loadingPrograss"
+        android:visibility="gone"/>
+    <!--   <include
+           layout="@layout/company_logo"
+           android:layout_width="match_parent"
+           android:layout_height="40dp"
+           app:layout_anchor="@id/partyList"
+           app:layout_anchorGravity="bottom|end"
+           />-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retry"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@+id/retry_party"
+        android:visibility="invisible"/>
+
+
+</android.support.design.widget.CoordinatorLayout>
+    <!--
+        </com.vlonjatg.progressactivity.ProgressActivity>-->

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+        >
+        <item
+            android:id="@+id/Home"
+            android:icon="@drawable/home_logo"
+
+            android:title="الرئسيه" />
+       <!-- <item
+            android:id="@+id/Music"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="الانشاد" />-->
+        <item
+            android:id="@+id/Gallary_list"
+            android:icon="@drawable/gallery_logo"
+            android:title="الصور" />
+        <item
+            android:id="@+id/Downloads"
+            android:icon="@drawable/download_logo"
+            android:title="التحميلات" />
+        <item
+            android:id="@+id/Search"
+            android:icon="@drawable/search_logo"
+            android:title="بحث" />
+        <item
+            android:id="@+id/nav_youtube"
+            android:icon="@drawable/videoicon"
+            android:title="فديوهات" />
+
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/social_facebook_icon"
+            android:visible="false"
+            android:title="Login" />
+        <item
+            android:id="@+id/About"
+            android:icon="@drawable/about"
+            android:title="عن التطبيق" />
+        <item
+            android:id="@+id/nav_exit"
+            android:icon="@drawable/exit"
+            android:title="Exit" />
+    </group>
+
+    <item android:title="تواصل معنا"
+        android:id="@+id/title"
+        android:visible="false"
+        >
+        <menu>
+            <!--<item
+                android:id="@+id/nav"
+                android:title="تواصل معنا                      " />
+-->
+            <item
+                android:id="@+id/nav_facebook"
+                android:icon="@drawable/fb_icon"
+                android:title="Facebook" />
+            <item
+                android:visible="false"
+                android:id="@+id/nav_soundcloud"
+                android:icon="@drawable/soundcloud_icon"
+                android:title="Sound cloud" />
+            <item
+                android:visible="false"
+                android:id="@+id/nav_twitter"
+                android:icon="@drawable/twitter_icon"
+                android:title="Twitter" />
+            <item
+                android:id="@+id/nav_youtubeChannel"
+                android:icon="@drawable/youtube_logo"
+                android:title="Youube Channel" />
+
+
+
+
+        </menu>
+    </item>
+
+</menu>

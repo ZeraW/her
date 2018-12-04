@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg_main"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.digitalsigma.hobrasul.Activity.PlayerActivity"
+    android:orientation="vertical">
+    <Button
+        android:layout_width="30sp"
+        android:layout_height="40sp"
+        android:id="@+id/playerbackbtn"
+        android:background="@drawable/bbb"
+        android:gravity="left"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:id="@+id/i"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/logo"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:id="@+id/imageView"
+            android:gravity="center"
+            android:src="@drawable/center_icon"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:id="@+id/playerbuttons"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            />
+
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar"
+            android:progressTint="#ffff00"
+            android:thumbTint="#d3d3d3"
+
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="-0-"
+                android:id="@+id/first"
+                android:textColor="@color/white"
+                android:gravity="right"
+                android:layout_above="@+id/seekBar"
+                android:layout_toLeftOf="@+id/textView"
+                android:layout_toStartOf="@+id/textView"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nameaaaaaa"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textStyle="bold"
+
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-0-"
+                android:id="@+id/finaltime"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:gravity="left"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/btn_next_player"
+                android:layout_marginTop="15dp"
+
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/next_button_lighting_new"
+
+                />
+
+
+
+            <Button
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:id="@+id/btn_play_pause"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:background="@drawable/play_button_light_new"
+
+
+                />
+
+            <Button
+                android:id="@+id/btnPlay_back"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+
+                android:background="@drawable/previrous_light_btn"
+                />
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"            >
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/ring_toun_button_lighting_new"
+                android:id="@+id/btn_call_tone_player"
+                />
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/download2"
+                android:layout_marginRight="15dp"
+                android:id="@+id/btn_fav_player"
+
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+    <include
+        layout="@layout/company_logo"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:layout_anchor="@id/playerbuttons"
+        app:layout_anchorGravity="bottom|end"
+        android:visibility="gone"
+        />
+
+</android.support.design.widget.CoordinatorLayout>

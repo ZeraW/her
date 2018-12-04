@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">في حب الرسول</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="facebook_app_id">418321928559890</string>
+    <string name="fb_login_protocol_scheme">fb418321928559890</string>
+
+
+    <!--
+    1829963833908425
+-->
+    <string name="admob_id">ca-app-pub-7056789173094146/9070089718</string>
+
+    <string name="admob_interstitial_id">ca-app-pub-7056789173094146/4500289311</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="back"><![CDATA[<]]></string>
+    <string name="rewind"><![CDATA[<<]]></string>
+    <string name="forward"><![CDATA[>>]]></string>
+    <string name="pause">||</string>
+
+
+    <string name="channela_name">في حب الرسول</string>
+    <string name="channel_description">this is notification channel for hob el rasul app</string>
+
+</resources>
