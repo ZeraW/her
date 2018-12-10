@@ -3,9 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.digitalsigma.hobrasul">
 
-    <uses-sdk
-        android:maxSdkVersion="25"
-        android:minSdkVersion="17" />
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />

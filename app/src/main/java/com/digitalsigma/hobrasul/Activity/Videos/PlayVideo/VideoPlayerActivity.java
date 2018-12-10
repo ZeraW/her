@@ -43,6 +43,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
 
 
     private void playVideo(String url, String videoName) {
+        Jzvd.releaseAllVideos();
         player.setUp(url, videoName, Jzvd.SCREEN_WINDOW_NORMAL);
         //player.thumbImageView.setImage("http://p.qpic.cn/videoyun/0/2449_43b6f696980311e59ed467f22794e792_1/640");
         player.startVideo();
