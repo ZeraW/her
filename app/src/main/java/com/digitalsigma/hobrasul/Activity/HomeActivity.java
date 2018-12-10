@@ -15,9 +15,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
-import com.facebook.share.widget.LikeView;
+
 import com.digitalsigma.hobrasul.Other.Constant;
 import com.digitalsigma.hobrasul.R;
 import com.digitalsigma.hobrasul.Service.MusicServiceSemsm;
@@ -44,7 +42,6 @@ public class HomeActivity extends Activity {
     private TelephonyManager telephonyManager;
     Button  btn_tracks,btn_video,btn_party,btn_news,btn_downloads,btn_gallary,btn_center;
 
-    LikeView likeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +57,6 @@ public class HomeActivity extends Activity {
         setLisner();
         StartAnimations();
 
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(this);
 
        /* likeView = (LikeView) findViewById(R.id.like_view);
         likeView.setObjectIdAndType(
@@ -152,7 +147,7 @@ public class HomeActivity extends Activity {
         btn_center.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, CvActiviy.class));
+                //startActivity(new Intent(HomeActivity.this, CvActiviy.class));
 
             }
         });

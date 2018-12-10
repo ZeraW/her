@@ -62,17 +62,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.facebook.AccessToken;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
-import com.facebook.LoggingBehavior;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.digitalsigma.hobrasul.Adapter.MusicRecyAdapter;
 import com.digitalsigma.hobrasul.Other.Constant;
 import com.digitalsigma.hobrasul.R;
@@ -102,9 +91,6 @@ public class AlbumTracksActivity extends AppCompatActivity {
 
     public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
 
-
-    CallbackManager callbackManager;
-    LoginButton loginButton;
     String id;
 
     SharedPreferences sharedPreferences;
@@ -210,7 +196,6 @@ public class AlbumTracksActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
         Catcho.Builder(this)
                 .activity(ContactActivity.class)
                 .build();
@@ -251,165 +236,14 @@ public class AlbumTracksActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        callbackManager = CallbackManager.Factory.create();
-        FacebookSdk.setIsDebugEnabled(true);
-        FacebookSdk.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS);
-
         checkAndRequestPermissions();
 
 
     }
 
-    public String phoneNumber() {
-        String main_data[] = {"data1", "is_primary", "data3", "data2", "data1",
-                "is_primary", "photo_uri", "mimetype"};
-        Object object = getContentResolver().
-                query(Uri.withAppendedPath(android.provider.ContactsContract.Profile.CONTENT_URI, "data"),
-                        main_data, "mimetype=?",
-                        new String[]{"vnd.android.cursor.item/phone_v2"},
-                        "is_primary DESC");
-        String s1 = "";
-        if (object != null) {
-            do {
-                if (!((Cursor) (object)).moveToNext())
-                    break;
-                // This is the phoneNumber
-                s1 = s1 + ((Cursor) (object)).getString(4);
-            } while (true);
-            ((Cursor) (object)).close();
-        }
-        return s1;
-    }
-
-    public void userRegister(final String name, final String email, final String gender, final String profileId, final String phone) {
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.registeration,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        Log.d("fadle", response);
-
-
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        //  Toast.makeText(SearchActivity.this,error.toString(),Toast.LENGTH_LONG).show();
-                        // loginUser();
-
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("name", name);
-                params.put("email", email);
-                params.put("id", profileId);
-                params.put("gender", gender);
-                params.put("phone_no", phone);
-               /* params.put(KEY_PASSWORD,password);
-                params.put(KEY_EMAIL, email);*/
-                return params;
-            }
-
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-    }
-
-    public void fbLogin(final View view) {
-        LoginManager.getInstance().logInWithReadPermissions(
-                AlbumTracksActivity.this,
-                Arrays.asList("public_profile,email"));
-        // LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("name,link,email,gender,birthday"));
-        //  LoginManager.getInstance().logInWithPublishPermissions(this, Arrays.asList("publish_actions"));
-        LoginManager.getInstance().registerCallback(callbackManager,
-                new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        // App code
-
-
-                        final AccessToken accessToken = loginResult.getAccessToken();
-
-
-                        GraphRequest request = GraphRequest.newMeRequest(
-                                accessToken,
-                                new GraphRequest.GraphJSONObjectCallback() {
-                                    @Override
-                                    public void onCompleted(
-                                            JSONObject object,
-                                            GraphResponse response) {
-
-
-                                        id = object.optString("id").toString();
-                                        String name = object.optString("name").toString();
-                                        String email = object.optString("email").toString();
-                                        String gender = object.optString("gender").toString();
-
-                                        // Toast.makeText(MainActivity.this, "name  "+name+" email"+email+" id"+id, Toast.LENGTH_SHORT).show();
-
-                                        String profileImg = "https://graph.facebook.com/" + id + "/picture?width=200&height=150";
-
-
-                                        //      Toast.makeText(AllTracksActivity.this, "name"+email, Toast.LENGTH_SHORT).show();
-                                        sharedPreferences = getSharedPreferences("info", Context.MODE_PRIVATE);
-                                        editor = sharedPreferences.edit();
-                                        editor.clear();
-                                        editor.putString("email", email);
-                                        editor.putString("name", name);
-                                        editor.putString("id", object.optString("id").toString());
-                                        editor.putString("gender", gender);
-                                        editor.putString("login", object.optString("login").toString());
-                                        editor.putString("imgUrl", profileImg);
-                                        editor.commit();
-
-                                        phoneNumber();
-                                        String phone = phoneNumber();
-
-
-                                        userRegister(name, email, gender, id, phone);
-
-
-                                        btnFav(view);
 
 
 
-
-                              /*  Toast.makeText(SplashScreenActivity.this, ""+object.optString("email").toString(), Toast.LENGTH_SHORT).show();
-                                // Application code
-                                Toast.makeText(SplashScreenActivity.this, ""+object.optString("id").toString(), Toast.LENGTH_SHORT).show();
-
-                                Log.d("id",object.optString("id").toString());
-                                Toast.makeText(SplashScreenActivity.this, ""+object.optString("name").toString(), Toast.LENGTH_SHORT).show();
-
-                                Toast.makeText(SplashScreenActivity.this, ""+object.optString("gender").toString(), Toast.LENGTH_SHORT).show();
-                                Toast.makeText(SplashScreenActivity.this, ""+object.optString("birthday").toString(), Toast.LENGTH_SHORT).show();
-*/
-                                    }
-                                });
-                        Bundle parameters = new Bundle();
-                        parameters.putString("fields", "id,name,link,email,gender,birthday");
-                        request.setParameters(parameters);
-                        request.executeAsync();
-
-
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        // App code
-                    }
-
-                    @Override
-                    public void onError(FacebookException exception) {
-                        // App code
-                    }
-                });
-    }
 
     public void btnFav(View v) {
 
@@ -730,51 +564,7 @@ public class AlbumTracksActivity extends AppCompatActivity {
 
 
     // --- Stop service (and music) ---
-    private void stopMyPlayService() {
-        // --Unregister broadcastReceiver for seekbar
-        if (mBroadcastIsRegistered) {
-            try {
-                unregisterReceiver(broadcastReceiver);
-                mBroadcastIsRegistered = false;
-            } catch (Exception e) {
-                // Log.e(TAG, "Error in Activity", e);
-                // TODO Auto-generated catch block
 
-                e.printStackTrace();
-       /*         Toast.makeText(
-
-                        TracksActivity.this,
-
-                        e.getClass().getName() + " " + e.getMessage(),
-
-                        Toast.LENGTH_LONG).show();*/
-            }
-        }
-
-        try {
-            stopService(serviceIntent);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-    /*        Toast.makeText(TracksActivity.this,
-                    e.getClass().getName() + " " + e.getMessage(),
-                    Toast.LENGTH_LONG).show();*/
-        }
-        boolMusicPlaying = false;
-    }
-
-
-    private void checkConnectivity() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        if (cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
-                .isConnectedOrConnecting()
-                || cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
-                .isConnectedOrConnecting())
-            isOnline = true;
-        else
-            isOnline = false;
-    }
 
     public void play() {
 
@@ -1959,17 +1749,6 @@ public class AlbumTracksActivity extends AppCompatActivity {
 
 
 
-  /*  @Override
-    public void onDestroy() {
-        super.onDestroy();
-
-        NotificationManager manager= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        manager.cancelAll();
-
-        stopService(playIntent);
-        musicSrv=null;
-
-    }*/
 
 
     @Override
@@ -2113,14 +1892,6 @@ public class AlbumTracksActivity extends AppCompatActivity {
     }
 
 
- /*   @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        if (MusicServiceSemsm.player !=null && MusicServiceSemsm.player.isPlaying() )
-        {
-            MusicServiceSemsm.player.pause();
-        }
-    }*/
 
     public interface ClickListener {
         void onClick(View view, int position);
@@ -2130,14 +1901,6 @@ public class AlbumTracksActivity extends AppCompatActivity {
 
 
 
-/*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-*/
 
 
     @Override
@@ -2163,9 +1926,6 @@ public class AlbumTracksActivity extends AppCompatActivity {
 
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-
-
     }
 
 

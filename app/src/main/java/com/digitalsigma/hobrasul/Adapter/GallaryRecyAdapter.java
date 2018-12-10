@@ -39,7 +39,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * Created by ahmedabouelfadle on 22/03/16.
@@ -197,7 +196,7 @@ public class GallaryRecyAdapter extends RecyclerView.Adapter<GallaryRecyAdapter.
                                 Bitmap bitmap = BitmapFactory.decodeFile(file1.toString(), options);
 
                                 WallpaperManager myWallpaperManager
-                                        = WallpaperManager.getInstance(getApplicationContext());
+                                        = WallpaperManager.getInstance(context);
                                 try {
                                     // Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL("http://www.gms-sms.com:89/TarekElSheikhApp/Tarek%20Elshikh/aaa%20(1).jpg").getContent());
                                     myWallpaperManager.setBitmap(bitmap);
@@ -331,7 +330,7 @@ public class GallaryRecyAdapter extends RecyclerView.Adapter<GallaryRecyAdapter.
             Bitmap bitmap = BitmapFactory.decodeFile(file.toString(), options);
 
             WallpaperManager myWallpaperManager
-                    = WallpaperManager.getInstance(getApplicationContext());
+                    = WallpaperManager.getInstance(context);
             try {
                 Bitmap b=BitmapFactory.decodeResource(context.getResources(),R.drawable.about);
                 // Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL("http://www.gms-sms.com:89/TarekElSheikhApp/Tarek%20Elshikh/aaa%20(1).jpg").getContent());

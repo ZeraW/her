@@ -33,8 +33,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
-
 /**
  * Created by user2 on 1/10/2017.
  */
@@ -127,7 +125,7 @@ public class GallarySwipeAdapter extends PagerAdapter {
                                     Bitmap bitmap = BitmapFactory.decodeFile(file1.toString(), options);
 
                                     WallpaperManager myWallpaperManager
-                                            = WallpaperManager.getInstance(getApplicationContext());
+                                            = WallpaperManager.getInstance(ctx);
                                     try {
                                         // Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL("http://www.gms-sms.com:89/TarekElSheikhApp/Tarek%20Elshikh/aaa%20(1).jpg").getContent());
                                         myWallpaperManager.setBitmap(bitmap);

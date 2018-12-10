@@ -57,19 +57,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.digitalsigma.hobrasul.Activity.Videos.Download.DownloadVideos;
 import com.digitalsigma.hobrasul.Activity.Videos.PlayVideo.VideoPlayerActivity;
-import com.facebook.AccessToken;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
-import com.facebook.HttpMethod;
-import com.facebook.LoggingBehavior;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
-import com.facebook.share.widget.LikeView;
+
 import com.digitalsigma.hobrasul.Adapter.CustomTypefaceSpan;
 import com.digitalsigma.hobrasul.Service.FCMRegistrationService;
 import com.digitalsigma.hobrasul.Service.MusicServiceSemsm;
@@ -177,12 +165,10 @@ public class MainActivity extends AppCompatActivity
     Button  btn_tracks,btn_video,btn_party,btn_news,btn_downloads,btn_gallary,btn_center;
 
 
-    LikeView likeView;
     InterstitialAd interstitial;
     ImageView imageView;
     RoundImage roundImage;
-    CallbackManager callbackManager;
-    LoginButton loginButton;
+
     String id;
 
     View header;
@@ -198,7 +184,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
         Catcho.Builder(this)
                 .activity(ContactActivity.class)
                 .build();
@@ -213,9 +198,7 @@ public class MainActivity extends AppCompatActivity
          setMainLisner();
         StartAnimations();
 
-        callbackManager = CallbackManager.Factory.create();
-        FacebookSdk.setIsDebugEnabled(true);
-        FacebookSdk.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS);
+
 
 
 
@@ -316,32 +299,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-        if(AccessToken.getCurrentAccessToken()!=null)
-        {
-            Log.v("User is login","YES");
-            // Toast.makeText(MainActivity.this, "in", Toast.LENGTH_SHORT).show();
-            sharedPreferences = getSharedPreferences("info",Context.MODE_PRIVATE);
-            String Img=sharedPreferences.getString("imgUrl","url");
-            String Name=sharedPreferences.getString("name","name");
-            Picasso
-                    .with(MainActivity.this)
-                    .load(Img)
 
-                    .into(circleImageView);
-
-            UserNameTxt.setText(Name);
-            nav_login.setTitle("Logout");
-
-
-
-
-        }
-        else
-        {
-            Log.v("User is not login","OK");
-            //   Toast.makeText(MainActivity.this, "out", Toast.LENGTH_SHORT).show();
-            nav_login.setTitle("Login");
-        }
 
 
       //  MobileAds.initialize(getApplicationContext(),"ca-app-pub-7056789173094146~2313294112");
@@ -625,9 +583,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-
-
-
     public static String formatSize(long size) {
         String suffix = null;
 
@@ -652,20 +607,6 @@ public class MainActivity extends AppCompatActivity
         return resultBuffer.toString();
     }
 
-
-    public static String getAvailableInternalMemorySize() {
-        File path = Environment.getDataDirectory();
-        StatFs stat = new StatFs(path.getPath());
-        long blockSize = stat.getBlockSize();
-        long availableBlocks = stat.getAvailableBlocks();
-        return formatSize(availableBlocks * blockSize);
-    }
-
-
-
-
-
-
     private ServiceConnection musicConnection = new ServiceConnection(){
 
         @Override
@@ -683,13 +624,6 @@ public class MainActivity extends AppCompatActivity
             musicBound = false;
         }
     };
-
-
-
-
-
-
-
 
 
     @Override
@@ -727,262 +661,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        if(AccessToken.getCurrentAccessToken()!=null)
-        {
-            Log.v("User is login","YES");
-            // Toast.makeText(MainActivity.this, "in", Toast.LENGTH_SHORT).show();
-            sharedPreferences = getSharedPreferences("info",Context.MODE_PRIVATE);
-            String Img=sharedPreferences.getString("imgUrl","url");
-            String Name=sharedPreferences.getString("name","name");
-            Picasso
-                    .with(MainActivity.this)
-                    .load(Img)
-                    .into(circleImageView);
-
-            UserNameTxt.setText(Name);
-            nav_login.setTitle("Logout");
-
-
-
-
-        }
-        else
-        {
-            Log.v("User is not login","OK");
-            //   Toast.makeText(MainActivity.this, "out", Toast.LENGTH_SHORT).show();
-            nav_login.setTitle("Login");
-        }
-    }
-    public void userRegister(final String name, final String email, final String gender, final String profileId, final String phone)
-    {
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.registeration,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        Log.d("fadle",response);
-
-
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        //  Toast.makeText(SearchActivity.this,error.toString(),Toast.LENGTH_LONG).show();
-                        // loginUser();
-
-                    }
-                }){
-            @Override
-            protected Map<String,String> getParams(){
-                Map<String,String> params = new HashMap<String, String>();
-                params.put("name",name);
-                params.put("email",email);
-                params.put("id",profileId);
-                params.put("gender",gender);
-                params.put("phone_no",phone);
-               /* params.put(KEY_PASSWORD,password);
-                params.put(KEY_EMAIL, email);*/
-                return params;
-            }
-
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-    }
-
-    public void disconnectFromFacebook() {
-
-        if (AccessToken.getCurrentAccessToken() == null) {
-            return; // already logged out
-        }
-
-        progressDialog=new ProgressDialog(MainActivity.this);
-        progressDialog.setTitle("Log out");
-        progressDialog.show();
-
-        new GraphRequest(AccessToken.getCurrentAccessToken(), "/me/", null,
-                HttpMethod.DELETE, new GraphRequest
-                .Callback() {
-            @Override
-            public void onCompleted(GraphResponse graphResponse) {
-
-                LoginManager.getInstance().logOut();
-
-                startActivity(new Intent(MainActivity.this,SplashScreenActivity.class));
-                finish();
-
-                progressDialog.dismiss();
-
-            }
-        }).executeAsync();
-
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        // get menu from navigationView
-        Menu menu = navigationView.getMenu();
-        // find MenuItem you want to change
-        MenuItem nav_login = menu.findItem(R.id.nav_login);
-
-        nav_login.setTitle("Login");
-        sharedPreferences = getSharedPreferences("info",Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-        editor.clear();
-        editor.commit();
 
     }
 
-    public void fbLogin(View view)
-    {
-        LoginManager.getInstance().logInWithReadPermissions(
-                MainActivity.this,
-                Arrays.asList("public_profile,email"));
-        // LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("name,link,email,gender,birthday"));
-        //  LoginManager.getInstance().logInWithPublishPermissions(this, Arrays.asList("publish_actions"));
-        LoginManager.getInstance().registerCallback(callbackManager,
-                new FacebookCallback<LoginResult>()
-                {
-                    @Override
-                    public void onSuccess(LoginResult loginResult)
-                    {
-                        // App code
 
-                        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-                        // get menu from navigationView
-                        Menu menu = navigationView.getMenu();
-                        // find MenuItem you want to change
-                        MenuItem nav_login = menu.findItem(R.id.nav_login);
-
-                        nav_login.setTitle("Logout");
-
-
-                        Toast.makeText(MainActivity.this, "Welcome login", Toast.LENGTH_SHORT).show();
-
-                        final AccessToken accessToken = loginResult.getAccessToken();
-
-
-
-
-
-                        GraphRequest request = GraphRequest.newMeRequest(
-                                accessToken,
-                                new GraphRequest.GraphJSONObjectCallback() {
-                                    @Override
-                                    public void onCompleted(
-                                            JSONObject object,
-                                            GraphResponse response) {
-
-
-                                        id=object.optString("id").toString();
-                                        String name=object.optString("name").toString();
-                                        String email=object.optString("email").toString();
-                                        String gender=object.optString("gender").toString();
-
-                                     /*   Toast.makeText(MainActivity.this, "name  "
-                                                +name+" email"+email+" id"+
-                                                id, Toast.LENGTH_SHORT).show();*/
-
-                                        String profileImg="https://graph.facebook.com/"+id+"/picture?width=200&height=150";
-
-
-                                        //   Toast.makeText(MainActivity.this, "name"+email, Toast.LENGTH_SHORT).show();
-                                        sharedPreferences = getSharedPreferences("info",Context.MODE_PRIVATE);
-                                        editor = sharedPreferences.edit();
-                                        editor.clear();
-
-                                        editor.putString("email",email);
-                                        editor.putString("name",name);
-                                        editor.putString("id",object.optString("id").toString());
-                                        editor.putString("gender",gender);
-                                        editor.putString("login",object.optString("login").toString());
-                                        editor.putString("imgUrl",profileImg);
-                                        editor.commit();
-
-                                        phoneNumber();
-                                        String phone=phoneNumber();
-
-                                        userRegister(name,email,gender,id,phone);
-
-
-
-                                        Picasso
-                                                .with(MainActivity.this)
-                                                .load(profileImg)
-                                                .into(circleImageView);
-
-                                        UserNameTxt.setText(name);
-
-
-
-
-                              /*  Toast.makeText(SplashScreenActivity.this, ""+object.optString("email").toString(), Toast.LENGTH_SHORT).show();
-                                // Application code
-                                Toast.makeText(SplashScreenActivity.this, ""+object.optString("id").toString(), Toast.LENGTH_SHORT).show();
-
-                                Log.d("id",object.optString("id").toString());
-                                Toast.makeText(SplashScreenActivity.this, ""+object.optString("name").toString(), Toast.LENGTH_SHORT).show();
-
-                                Toast.makeText(SplashScreenActivity.this, ""+object.optString("gender").toString(), Toast.LENGTH_SHORT).show();
-                                Toast.makeText(SplashScreenActivity.this, ""+object.optString("birthday").toString(), Toast.LENGTH_SHORT).show();
-*/
-                                    }
-                                });
-                        Bundle parameters = new Bundle();
-                        parameters.putString("fields", "id,name,link,email,gender,birthday");
-                        request.setParameters(parameters);
-                        request.executeAsync();
-
-
-                    }
-
-                    @Override
-                    public void onCancel()
-                    {
-                        Toast.makeText(MainActivity.this, "cancel", Toast.LENGTH_SHORT).show();
-
-                        // App code
-                    }
-
-                    @Override
-                    public void onError(FacebookException exception)
-                    {
-
-                        Toast.makeText(MainActivity.this, "error", Toast.LENGTH_SHORT).show();
-                        // App code
-                    }
-                });
-    }
-
-
-    public String phoneNumber()
-    {
-        String main_data[] = {"data1", "is_primary", "data3", "data2", "data1",
-                "is_primary", "photo_uri", "mimetype"};
-        Object object = getContentResolver().
-                query(Uri.withAppendedPath(android.provider.ContactsContract.Profile.CONTENT_URI, "data"),
-                        main_data, "mimetype=?",
-                        new String[]{"vnd.android.cursor.item/phone_v2"},
-                        "is_primary DESC");
-        String s1="";
-        if (object != null) {
-            do {
-                if (!((Cursor) (object)).moveToNext())
-                    break;
-                // This is the phoneNumber
-                s1 =s1+ ((Cursor) (object)).getString(4);
-            } while (true);
-            ((Cursor) (object)).close();
-        }
-        return s1;
-    }
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-
-
     }
 
 
@@ -1043,47 +728,7 @@ public class MainActivity extends AppCompatActivity
             // find MenuItem you want to change
             MenuItem nav_login = menu.findItem(R.id.nav_login);
             //   nav_login.setTitle("Logout");
-            if(AccessToken.getCurrentAccessToken()!=null)
-            {
-                // set new title to the MenuItem
-                //nav_login.setTitle("Login");
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-
-                //"لكى تكون كول تون لهاتفك "+Constant.playListName.get(position)+"لقد اخترت "
-                builder.setMessage("هل تريد تسجيل الخروج");
-
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        Toast.makeText(MainActivity.this, "logout", Toast.LENGTH_SHORT).show();
-
-                        disconnectFromFacebook();
-                        dialog.dismiss();
-                    }
-                });
-
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        dialog.dismiss();
-                    }
-                });
-
-                AlertDialog alert = builder.create();
-                alert.show();
-            }
-            else {
-                Toast.makeText(MainActivity.this, "login", Toast.LENGTH_SHORT).show();
-                // loginFacebook();
-                fbLogin(findViewById(R.id.nav_login));
-                sharedPreferences = getSharedPreferences("info",Context.MODE_PRIVATE);
-                String Img=sharedPreferences.getString("imgUrl","url");
-                String Name=sharedPreferences.getString("name","name");
-            }
         }
 
         else if (id == R.id.nav_facebook) {
@@ -1361,7 +1006,7 @@ public class MainActivity extends AppCompatActivity
         btn_center.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, CvActiviy.class));
+                //startActivity(new Intent(MainActivity.this, CvActiviy.class));
 
             }
         });
